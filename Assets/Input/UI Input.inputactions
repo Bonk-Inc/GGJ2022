@@ -1,0 +1,46 @@
+{
+    "name": "UI Input",
+    "maps": [
+        {
+            "name": "Play UI Actions",
+            "id": "35d34ec5-8f45-4121-a2df-c281611f9465",
+            "actions": [
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "f7ce68fe-599d-4e4a-9c07-ae10ab5b080c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fc4a566e-2bb5-40fd-b37f-76809d3d23e4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard-Mouse",
+                    "action": "pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "keyboard",
+            "bindingGroup": "keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
