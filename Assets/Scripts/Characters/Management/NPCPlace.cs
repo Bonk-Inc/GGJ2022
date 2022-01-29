@@ -16,13 +16,14 @@ public class NPCPlace : MonoBehaviour
     public event Action<int> OnSpotsCleared;
 
     private void ResetPlace() {
-
+        npcSaved = 0;
     }
 
     private bool SetNPC(Transform npc) {
-        // if(GetNPC() != null) return false;
+        var stepDad = SelectSpot();
+        if(stepDad == null) return false;
 
-        npc.transform.SetParent(SelectSpot());
+        npc.transform.SetParent(stepDad);
         npc.localPosition = Vector2.zero;
         return true;
     }
@@ -55,12 +56,17 @@ public class NPCPlace : MonoBehaviour
     }
 
     public void FillSpots(int spots) {
-        ExtractionTimer npc = GameObject.Instantiate(npcPrefab);
-        npc.onExtract += ExtractNPC;
-        npc.GetComponent<Health>().OnHealthChange += (caller, args) => {
-            if(args.IsDead) CheckSpots();
-        };
-        
+        ResetPlace();
+        spots = Math.Min(npcSpots.Count, spots);
+        for (var i = 0; i < spots; i++)
+        {
+            ExtractionTimer npc = GameObject.Instantiate(npcPrefab);
+            SetNPC(npc.transform);
+            npc.onExtract += ExtractNPC;
+            npc.GetComponent<Health>().OnHealthChange += (caller, args) => {
+                if(args.IsDead) CheckSpots();
+            };
+        }
     }
 
     public int GetAmountNPCLeft() {

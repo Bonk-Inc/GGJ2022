@@ -16,7 +16,7 @@ public class NPCSpotTracker : MonoBehaviour
         if(spot == null) return;
 
         // TODO Randomize or give as parameter
-        spot.FillSpots(3);
+        spot.FillSpots(5);
     }
 
     private NPCPlace FindPlace() {
