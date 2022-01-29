@@ -54,7 +54,6 @@ public class WeaponSelector : MonoBehaviour {
     }
 
     private void SelectNewWeapon(int index) {
-        Debug.Log(index);
         Weapon previousWeapon = weapons[currentWeapon];
         previousWeapon.gameObject.SetActive(false);
 
