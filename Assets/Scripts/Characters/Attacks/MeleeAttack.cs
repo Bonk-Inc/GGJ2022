@@ -1,29 +1,58 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
-{ 
+{
+    [SerializeField]
+    private float attackRadius = 1f;
+
+    [SerializeField]
+    private int damage = 1;
+
+    [SerializeField] 
+    private LayerMask mask;
+    
     private Coroutine attackCoroutine;
-    
-    public event Action onTargetHit;
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void FixedUpdate()
     {
-        attackCoroutine = StartCoroutine(HitTarget());
+        var hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, mask);
+        if (hits.Length <= 0)
+        {
+            if (attackCoroutine == null)
+                return;
+
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+
+            return;
+        }
+
+        attackCoroutine ??= StartCoroutine(HitTargets(hits));
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private HitData CreateHitData()
     {
-        StopCoroutine(attackCoroutine);
+        return new HitData
+        {
+            damage = damage,
+        };
     }
-
-    private IEnumerator HitTarget()
+    
+    private IEnumerator HitTargets(Collider2D[] hits)
     {
         while (true)
         {
-            onTargetHit?.Invoke();
+            foreach (var hit in hits)
+            {
+                var target = hit.GetComponent<Hittable>();
+                if (target == null)
+                    continue;
 
+                var hitData = CreateHitData();
+                target.Hit(hitData);
+            }
+            
             yield return new WaitForSeconds(1f);   
         }
     }

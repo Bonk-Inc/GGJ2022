@@ -357,7 +357,9 @@ GameObject:
   - component: {fileID: 1212506935}
   - component: {fileID: 1212506937}
   - component: {fileID: 1212506936}
-  m_Layer: 0
+  - component: {fileID: 1212506939}
+  - component: {fileID: 1212506938}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,6 +480,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1212506938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212506933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d924d890912de46a514da63877fc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1212506939}
+--- !u!114 &1212506939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212506933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474f854b6fe3767459955d7194b600eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  initialHealth: 100
 --- !u!1 &1244759707
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +672,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5251b3eb3b0d8d057a70b5748bda6ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionArea: 50
+  attackRadius: 1
+  damage: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!61 &1988094982
 BoxCollider2D:
   m_ObjectHideFlags: 0
