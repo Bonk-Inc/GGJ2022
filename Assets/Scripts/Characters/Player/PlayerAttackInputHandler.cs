@@ -7,11 +7,13 @@ public class PlayerAttackInputHandler : MonoBehaviour
 {
 
     [SerializeField]
-    private RangedWeapon weapon;
+    private Weapon weapon;
 
     public void OnAttack(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started) {
-            weapon?.Shoot();
+            weapon.Trigger();    
+        } else if (context.phase == InputActionPhase.Canceled) {
+            weapon.Release();
         }
     }
 }
