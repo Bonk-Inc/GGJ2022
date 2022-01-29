@@ -24,5 +24,7 @@ public class ExtractionTimer : MonoBehaviour
 
     private void Extract() {
         if(onExtract != null) onExtract.Invoke(gameObject);
+
+        // TODO Extract Animation?
     }
 }
