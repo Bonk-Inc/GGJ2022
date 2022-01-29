@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 1840659318}
   - component: {fileID: 1840659319}
   - component: {fileID: 1638692414}
+  - component: {fileID: 2860793742721044886}
   m_Layer: 3
   m_Name: Player-chan
   m_TagString: Untagged
@@ -367,5 +368,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474f854b6fe3767459955d7194b600eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  initialHealth: 1
+  maxHealth: 100
+  initialHealth: 100
+--- !u!114 &2860793742721044886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173657087114078419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82b9b0709ea41d4890df0f0fae2e3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1638692414}

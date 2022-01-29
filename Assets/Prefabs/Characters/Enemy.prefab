@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5235553210854032205}
   - component: {fileID: 585418940237829724}
   - component: {fileID: 967240310214243606}
+  - component: {fileID: 984993250}
+  - component: {fileID: 4330590542912424783}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -195,3 +197,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 585418940237829724}
+--- !u!114 &984993250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862222968755655148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d924d890912de46a514da63877fc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 585418940237829724}
+--- !u!114 &4330590542912424783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862222968755655148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5251b3eb3b0d8d057a70b5748bda6ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1
+  damage: 5
+  mask:
+    serializedVersion: 2
+    m_Bits: 264
