@@ -4,7 +4,7 @@ using UnityEngine;
 public class MeleeAttack : MonoBehaviour
 {
     [SerializeField]
-    private float attackRadius = 1f;
+    private float attackRadius = 1f, attackInterval = 1f;
 
     [SerializeField]
     private int damage = 1;
@@ -53,7 +53,7 @@ public class MeleeAttack : MonoBehaviour
                 target.Hit(hitData);
             }
             
-            yield return new WaitForSeconds(1f);   
+            yield return new WaitForSeconds(attackInterval);   
         }
     }
 }
