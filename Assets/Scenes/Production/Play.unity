@@ -266,11 +266,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1121846026364184219, guid: 26642b2ee520c0147b93d1390787cb0d, type: 3}
   m_PrefabInstance: {fileID: 577926711}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &732329727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1173657087114078419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-  m_PrefabInstance: {fileID: 1638692407}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984993244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4862222968755655148, guid: 5713cca6f127eb04c9fabc8b992d77e1, type: 3}
@@ -460,10 +455,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6828136557272460985, guid: 2fe7fcd1d007645408dbe33e8a3b32b8, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6828136557404305939, guid: 2fe7fcd1d007645408dbe33e8a3b32b8, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1638692418}
     - target: {fileID: 6828136557879154214, guid: 2fe7fcd1d007645408dbe33e8a3b32b8, type: 3}
       propertyPath: m_Name
       value: Main Game UI
@@ -537,14 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 550212332, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-      propertyPath: shooterCollider
-      value: 
-      objectReference: {fileID: 1638692417}
-    - target: {fileID: 550212332, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 5654152913794314459, guid: 14ebca5e65440eb1eabf00175da17123, type: 3}
     - target: {fileID: 1173657087114078414, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -589,10 +576,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1173657087114078415, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1173657087114078419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_Name
       value: Player-chan
@@ -604,22 +587,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1173657087114078414, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
   m_PrefabInstance: {fileID: 1638692407}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1638692414
+--- !u!114 &1638692418 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1638692414, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+  m_PrefabInstance: {fileID: 1638692407}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732329727}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474f854b6fe3767459955d7194b600eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  initialHealth: 1
---- !u!61 &1638692417 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4768001279719350768, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-  m_PrefabInstance: {fileID: 1638692407}
-  m_PrefabAsset: {fileID: 0}
