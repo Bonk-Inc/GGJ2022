@@ -35,10 +35,6 @@ public class NPCPlace : MonoBehaviour
         return null;
     }
 
-    public Transform GetNPC() {
-        if(transform.childCount == 0) return null;
-        return transform.GetChild(0);
-    }
 
     private void ExtractNPC(GameObject npc) {
         Destroy(npc.gameObject);
@@ -47,6 +43,15 @@ public class NPCPlace : MonoBehaviour
 
     private void CheckSpots() {
         if(GetAmountNPCLeft() == 0 && OnSpotsCleared != null) OnSpotsCleared.Invoke(npcSaved);
+    }
+
+    public List<Transform> GetNPCs() {
+        var npcs = new List<Transform>();
+        foreach (var spot in npcSpots)
+        {
+            if(transform.childCount != 0) npcs.Add(transform.GetChild(0));
+        }
+        return npcs;
     }
 
     public void FillSpots(int spots) {
