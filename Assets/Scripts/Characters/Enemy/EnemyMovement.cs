@@ -9,14 +9,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private TargetPicker targetPicker;
 
-    [SerializeField]
-    private float speed = 10;
-
-    private Rigidbody2D rb;
     private NavMeshAgent agent;
 
     private void Awake() {
-        rb = GetComponent<Rigidbody2D>();
         targetPicker = GetComponent<TargetPicker>();
         agent = GetComponent<NavMeshAgent>();
 
@@ -30,9 +25,6 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         agent.SetDestination(target.position);
-
-        // Vector2 dir = (target.position - transform.position).normalized;
-        // rb.position += (dir * Time.deltaTime * speed);
     }
 
     private void ChangeTarget(Transform newTarget) {
