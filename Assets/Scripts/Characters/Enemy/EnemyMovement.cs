@@ -19,15 +19,20 @@ public class EnemyMovement : MonoBehaviour
         agent.updateUpAxis = false;
         
         targetPicker.onTargetChanged += ChangeTarget;
-        target = targetPicker.MainTarget;
+        ChangeToDefault();
     }
 
     private void Update()
     {
+        if(target == null) ChangeToDefault();
         agent.SetDestination(target.position);
     }
 
     private void ChangeTarget(Transform newTarget) {
         target = newTarget;
+    }
+
+    private void ChangeToDefault() {
+        target = targetPicker.MainTarget;
     }
 }
