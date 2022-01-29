@@ -6,15 +6,27 @@ using UnityEngine.InputSystem;
 public class MainUIState : PdaState
 {
 
+    [Header("Pause")]
     [SerializeField]
     private InputAction pauseInput;
 
     [SerializeField]
     private PdaState pauseState;
 
+    [Header("Game Over")]
+    [SerializeField]
+    private Health playerHealth;
+
+    [SerializeField]
+    private PdaState gameOverState;
+
     private void Awake() {
         pauseInput.Enable();
         pauseInput.performed += (c) => PauseGame();
+        playerHealth.OnHealthChange += (caller, args) => { 
+            if(args.IsDead)
+                Machine.PushState(gameOverState);
+        };
     }
 
     public override void Pause()
