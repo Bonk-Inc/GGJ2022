@@ -537,6 +537,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 550212332, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: shooterCollider
+      value: 
+      objectReference: {fileID: 1638692417}
+    - target: {fileID: 550212332, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5654152913794314459, guid: 14ebca5e65440eb1eabf00175da17123, type: 3}
     - target: {fileID: 1173657087114078414, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -610,3 +618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   initialHealth: 1
+--- !u!61 &1638692417 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4768001279719350768, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+  m_PrefabInstance: {fileID: 1638692407}
+  m_PrefabAsset: {fileID: 0}
