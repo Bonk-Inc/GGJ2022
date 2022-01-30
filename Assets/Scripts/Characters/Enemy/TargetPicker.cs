@@ -46,4 +46,8 @@ public class TargetPicker : MonoBehaviour
         }
         return chosenTarget;
     }
+
+    public void SetMainTarget(Transform main){
+        this.mainTarget = main;
+    }
 }
