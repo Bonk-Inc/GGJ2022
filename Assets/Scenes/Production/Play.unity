@@ -1686,6 +1686,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1173657087114078415, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1173657087114078419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_Name
       value: Player-chan
