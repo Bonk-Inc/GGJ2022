@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1480829427}
+  animator: {fileID: 1638692419}
 --- !u!114 &1638692414
 MonoBehaviour:
   m_ObjectHideFlags: 0
