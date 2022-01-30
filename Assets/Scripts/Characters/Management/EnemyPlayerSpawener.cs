@@ -44,7 +44,6 @@ public class EnemyPlayerSpawener : MonoBehaviour
 
     private bool IsInView(Vector2 position){
         var camRect = CreateCamRect();
-        Debug.Log(camRect.size);
         return camRect.Contains(position);
     }
 
