@@ -45,6 +45,7 @@ public class WinScreenDecider : MonoBehaviour
     private void SetUI(WinScreenData data) {
         title.text = data.title;
         mcPortrait.sprite = data.image;
+        data.extra.SetActive(true);
     }
 
 
@@ -53,5 +54,6 @@ public class WinScreenDecider : MonoBehaviour
     {
         public string title;
         public Sprite image;
+        public GameObject extra;
     }
 }
