@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingCone : Weapon
 {
-    private const string NPC_TAG = "Neutral";
-    private const string Enemy_TAG = "Enemy";
+    private const string NpcTag = "Neutral";
+    private const string EnemyTag = "Enemy";
+
+    private const int NpcHealKarmaIncrease = 100;
 
     [SerializeField]
     private float coneAngle = 90;
@@ -55,9 +55,10 @@ public class HealingCone : Weapon
         var allInCone = Physics2DHelper.ConeOverlapAll(transform.position, transform.up, coneAngle, maxDistance, minDistance);
         foreach (var collider in allInCone)
         {
-            if(currentHealStamp >= 1 && collider.CompareTag(NPC_TAG)) {
+            if(currentHealStamp >= 1 && collider.CompareTag(NpcTag)) {
                 collider.GetComponent<Hittable>().Hit(new HitData {damage= -healPerSecond});
-            } else if (collider.CompareTag(Enemy_TAG)){
+                GameManager.instance.karma.Increase(NpcHealKarmaIncrease);
+            } else if (collider.CompareTag(EnemyTag)){
                 var pushDirection = (collider.transform.position - transform.position).normalized;
                 collider.attachedRigidbody.AddForce(pushDirection * pushforce);
             }

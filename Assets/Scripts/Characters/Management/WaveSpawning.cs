@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawning : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class WaveSpawning : MonoBehaviour
 
     [SerializeField]
     private List<WaveData> waveData;
+
+    private const string recentWinPlayerPref = "RecentWin";
+    private const string humanWinPlayerPref = "HumanWin";
+    private const string winScene = "WinScreen";
 
     private int currentWave = 0;
 
@@ -35,7 +40,9 @@ public class WaveSpawning : MonoBehaviour
     }
 
     private void WinGame() {
-
+        PlayerPrefs.SetInt(humanWinPlayerPref, 1);
+        PlayerPrefs.SetString(recentWinPlayerPref, humanWinPlayerPref);
+        SceneManager.LoadScene(winScene);
     }
 
     [Serializable]
