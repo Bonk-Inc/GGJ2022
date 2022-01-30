@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KarmaChangeHandler : MonoBehaviour
 {
@@ -41,6 +42,6 @@ public class KarmaChangeHandler : MonoBehaviour
     private void WinGame(string keyWin) {
         PlayerPrefs.SetInt(keyWin, 1);
         PlayerPrefs.SetString(recentWinPlayerPref, keyWin);
-        SceneManager.LoadScene(newScene);
+        SceneManager.LoadScene(winScene);
     }
 }
