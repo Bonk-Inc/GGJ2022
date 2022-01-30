@@ -9,7 +9,7 @@ public class ProjectileAttack : MonoBehaviour
     private float speed = 3f, destroyAfterSeconds = 3f;
 
     [SerializeField] 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
 
     private void Start()
     {
@@ -24,8 +24,8 @@ public class ProjectileAttack : MonoBehaviour
     private void MoveForward()
     {
         Vector2 totalMove = transform.up * speed * Time.deltaTime;
-        Vector2 newPosition = rigidbody.position + totalMove;
-        rigidbody.position = newPosition;
+        Vector2 newPosition = rb.position + totalMove;
+        rb.position = newPosition;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

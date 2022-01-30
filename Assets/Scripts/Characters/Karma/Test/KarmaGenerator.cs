@@ -15,7 +15,7 @@ public class KarmaGenerator : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopCoroutine(generatorCoroutine);
+        if(generatorCoroutine != null) StopCoroutine(generatorCoroutine);
     }
 
     private IEnumerator KarmaValueGenerator()

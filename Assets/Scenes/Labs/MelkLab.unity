@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 354707512}
   - component: {fileID: 354707511}
   - component: {fileID: 354707510}
+  - component: {fileID: 354707513}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -323,6 +324,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354707513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354707509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44cf31536103704db1c894f6142a87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370730111
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +869,35 @@ Transform:
   m_Father: {fileID: 380518660}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1709051563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1173657087114078419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+  m_PrefabInstance: {fileID: 1969340678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709051565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2998575734700426797, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+  m_PrefabInstance: {fileID: 1969340678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709051563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd0230d048daef4ca8f6e60665d7bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1709051575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709051563}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7203e937a6784b61bd2ddd689ce25633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  karma: {fileID: 1709051565}
 --- !u!1 &1818589385
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +984,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-chan
       objectReference: {fileID: 0}
+    - target: {fileID: 2998575734700426797, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: maxKarma
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484952638339056984, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: sceneSwitcher
+      value: 
+      objectReference: {fileID: 354707513}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
 --- !u!1001 &7277100099751177121

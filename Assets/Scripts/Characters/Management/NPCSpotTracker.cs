@@ -8,7 +8,7 @@ public class NPCSpotTracker : MonoBehaviour
     [SerializeField]
     private List<NPCPlace> npcPlaces;
     
-    public event Action<GameObject> onNPCExtracted;
+    public event Action<GameObject> onNPCExtracted; //TODO
 
     [ContextMenu("SpawnNPC")]
     public void SpawnNPC() {
