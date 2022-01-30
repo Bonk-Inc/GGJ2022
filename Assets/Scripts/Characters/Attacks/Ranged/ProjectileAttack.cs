@@ -11,6 +11,8 @@ public class ProjectileAttack : MonoBehaviour
     [SerializeField] 
     private Rigidbody2D rb;
 
+    public string senderTag;
+    
     private void Start()
     {
         Destroy(gameObject, destroyAfterSeconds);
@@ -49,6 +51,8 @@ public class ProjectileAttack : MonoBehaviour
         return new HitData
         {
             damage = damage,
+            attackerTag = senderTag,
+            attackingTag = collision.gameObject.tag,
             collision = collision,
         };
     }

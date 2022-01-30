@@ -31,10 +31,12 @@ public class MeleeAttack : MonoBehaviour
         attackCoroutine ??= StartCoroutine(HitTargets(hits));
     }
 
-    private HitData CreateHitData()
+    private HitData CreateHitData(string attackingTag)
     {
         return new HitData
         {
+            attackerTag = tag,
+            attackingTag = attackingTag,
             damage = damage,
         };
     }
@@ -48,8 +50,8 @@ public class MeleeAttack : MonoBehaviour
                 var target = hit.GetComponent<Hittable>();
                 if (target == null)
                     continue;
-
-                var hitData = CreateHitData();
+                
+                var hitData = CreateHitData(hit.gameObject.tag);
                 target.Hit(hitData);
             }
             
