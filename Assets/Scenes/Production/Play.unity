@@ -926,7 +926,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8539835458045521864, guid: ab809a5db5610b34db4eca9e20221953, type: 3}
   m_PrefabInstance: {fileID: 316324375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 316324378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72139ec4a11639745bf8666ddcb770ab, type: 3}
@@ -1133,6 +1133,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8539835458054523468, guid: ab809a5db5610b34db4eca9e20221953, type: 3}
   m_PrefabInstance: {fileID: 316324375}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &316324378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8539835458045521719, guid: ab809a5db5610b34db4eca9e20221953, type: 3}
+  m_PrefabInstance: {fileID: 316324375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &316324379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316324378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab2ec4c98a4fc74fabd7fe3705e08d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotTracker: {fileID: 291245736}
+  waveData:
+  - time: 0
+    npcPlaces: 1
+  - time: 40
+    npcPlaces: 3
+  - time: 60
+    npcPlaces: 5
+  - time: 20
+    npcPlaces: 2
+  - time: 40
+    npcPlaces: 8
 --- !u!114 &333047889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6341255919659546097, guid: e6758e09f1c0a964b8cd2a3de3119967, type: 3}
