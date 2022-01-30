@@ -5,9 +5,6 @@ public class KarmaChangeHandler : MonoBehaviour
     [SerializeField] 
     private Karma karma;
 
-    [SerializeField]
-    private SceneSwitcher sceneSwitcher;
-
     private const string recentWinPlayerPref = "RecentWin";
     private const string demonWinPlayerPref = "DemonWin";
     private const string angelWinPlayerPref = "AngelWin";
@@ -44,6 +41,6 @@ public class KarmaChangeHandler : MonoBehaviour
     private void WinGame(string keyWin) {
         PlayerPrefs.SetInt(keyWin, 1);
         PlayerPrefs.SetString(recentWinPlayerPref, keyWin);
-        sceneSwitcher.SwitchScene(winScene);
+        SceneManager.LoadScene(newScene);
     }
 }
