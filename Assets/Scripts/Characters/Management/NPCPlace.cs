@@ -9,7 +9,13 @@ public class NPCPlace : MonoBehaviour
     private ExtractionTimer npcPrefab;
 
     [SerializeField]
+    private GameObject enemyPrefab;
+
+    [SerializeField]
     private List<Transform> npcSpots;
+
+    [SerializeField]
+    private List<Transform> enemySpots;
 
     private int npcSaved = 0;
 
@@ -66,6 +72,12 @@ public class NPCPlace : MonoBehaviour
             npc.GetComponent<Health>().OnHealthChange += (caller, args) => {
                 if(args.IsDead) CheckSpots();
             };
+        }
+
+        for (var i = 0; i < spots; i++)
+        {
+            GameObject enemy = GameObject.Instantiate(enemyPrefab);
+            enemy.transform.position = enemySpots[i].position;
         }
     }
 
