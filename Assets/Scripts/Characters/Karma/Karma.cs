@@ -4,7 +4,7 @@ using UnityEngine;
 public class Karma : MonoBehaviour
 {
     [SerializeField] 
-    private int maxKarma;
+    private int maxKarma = 100;
 
     public event EventHandler<KarmaChangeArgs> OnKarmaChange; 
     
@@ -46,7 +46,8 @@ public class Karma : MonoBehaviour
         var eventArgs = new KarmaChangeArgs
         {
             previousKarmaState = previousKarmaState,
-            newKarmaState = KarmaState
+            newKarmaState = KarmaState,
+            karma = currentKarma
         };
         
         OnKarmaChange?.Invoke(this, eventArgs);
@@ -55,5 +56,6 @@ public class Karma : MonoBehaviour
     public class KarmaChangeArgs
     {
         public KarmaState previousKarmaState, newKarmaState;
+        public int karma;
     }
 }
