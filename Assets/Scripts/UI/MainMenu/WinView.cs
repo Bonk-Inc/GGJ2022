@@ -17,8 +17,6 @@ public class WinView : MonoBehaviour
     [SerializeField]
     private Color hiddenColor, shownColor;
 
-    private const string demonWinPlayerPref = "DemonWin";
-    private const string angelWinPlayerPref = "AngelWin";
     private void Awake()
     {
         var key = PlayerPrefs.GetInt(winKey);

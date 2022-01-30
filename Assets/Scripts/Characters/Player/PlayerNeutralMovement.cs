@@ -12,6 +12,9 @@ public class PlayerNeutralMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    [SerializeField]
+    private Animator animator;
+
     private Vector2 direction = Vector2.zero;
 
     public void SetDirection(InputAction.CallbackContext context){
@@ -19,10 +22,12 @@ public class PlayerNeutralMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        
+        animator.SetInteger("Direction", (int) rb.velocity.x);
         MoveInSetDirection();
     }
 
-    private void MoveInSetDirection(){
+    private void MoveInSetDirection() {
         rb.AddForce(direction * force, ForceMode2D.Force);
     }
 

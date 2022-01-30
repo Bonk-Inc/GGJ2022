@@ -198,12 +198,11 @@ GameObject:
   - component: {fileID: 1173657087114078415}
   - component: {fileID: 4768001279719350768}
   - component: {fileID: 1840659318}
-  - component: {fileID: 1840659319}
   - component: {fileID: 1638692414}
   - component: {fileID: 1638692426}
   - component: {fileID: 2998575734700426797}
   - component: {fileID: 3484952638339056984}
-  - component: {fileID: 7719459721658525380}
+  - component: {fileID: 1638692419}
   m_Layer: 3
   m_Name: Player-chan
   m_TagString: Untagged
@@ -218,7 +217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173657087114078419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7909673, w: 0.61185855}
   m_LocalPosition: {x: 1.89, y: 6.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -226,7 +225,7 @@ Transform:
   - {fileID: 1774964820562824742}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 104.552}
 --- !u!212 &1173657087114078417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,8 +267,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.11444041, g: 0.9622642, b: 0.031772893, a: 1}
+  m_Sprite: {fileID: 1804529339, guid: 1606d597c0e5fcb49b39a14fcd4d6b82, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -338,7 +337,7 @@ MonoBehaviour:
     m_ActionName: Actions/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1840659319}
+      - m_Target: {fileID: 83876028}
         m_TargetAssemblyTypeName: PlayerAimInputHandler, Assembly-CSharp
         m_MethodName: UpdateAim
         m_Mode: 0
@@ -387,6 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 200
   rb: {fileID: 1173657087114078415}
+  animator: {fileID: 1638692419}
 --- !u!50 &1173657087114078415
 Rigidbody2D:
   serializedVersion: 4
@@ -421,18 +421,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0030765533, y: 0.0030741692}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.105, y: 1.515}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.129116, y: 1.547204}
   m_EdgeRadius: 0
 --- !u!114 &1840659318
 MonoBehaviour:
@@ -447,18 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1480829427}
---- !u!114 &1840659319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173657087114078419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1200868e22272d44e981e12d04b12341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1638692414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,20 +500,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   karma: {fileID: 2998575734700426797}
---- !u!114 &7719459721658525380
-MonoBehaviour:
+--- !u!95 &1638692419
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173657087114078419}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71203931acce4a2b8dcf6f69a27120a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  karma: {fileID: 2998575734700426797}
-  sceneSwitcher: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f72f6157d4f30a0408d37e5ecbe2d69f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2858213497614646100
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774964820562824742}
   - component: {fileID: 2008177493103333591}
+  - component: {fileID: 83876028}
   m_Layer: 3
   m_Name: Weapons
   m_TagString: Untagged
@@ -624,3 +619,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHandler: {fileID: 1840659318}
+--- !u!114 &83876028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539432511665408278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1200868e22272d44e981e12d04b12341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

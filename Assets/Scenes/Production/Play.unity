@@ -1642,6 +1642,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1638692419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: cb2a4b0daf3f2c24a8a53e541e926403, type: 2}
+    - target: {fileID: 1840659318, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1638692419}
     - target: {fileID: 1173657087114078414, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1686,10 +1694,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1173657087114078415, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1173657087114078419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
       propertyPath: m_Name
       value: Player-chan
@@ -1712,6 +1716,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474f854b6fe3767459955d7194b600eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1638692419 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1638692419, guid: 7d03be5ab6157de478c8115d2f887c36, type: 3}
+  m_PrefabInstance: {fileID: 1638692407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692530053
 GameObject:
   m_ObjectHideFlags: 0

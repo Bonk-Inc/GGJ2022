@@ -102,7 +102,7 @@ MonoBehaviour:
   damage: 2
   speed: 30
   destroyAfterSeconds: 10
-  rigidbody: {fileID: 789041900993631462}
+  rb: {fileID: 789041900993631462}
 --- !u!50 &789041900993631462
 Rigidbody2D:
   serializedVersion: 4
