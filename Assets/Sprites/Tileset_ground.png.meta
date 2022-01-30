@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -702,9 +702,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Tileset_ground_0: -714932086
       Tileset_ground_8: 433106606
       Tileset_ground_16: -50242761
-      Tileset_ground_27: 378626972
       Tileset_ground_21: -335905572
       Tileset_ground_7: -1878228363
       Tileset_ground_15: -1641707875
@@ -726,10 +726,10 @@ TextureImporter:
       Tileset_ground_11: -151618391
       Tileset_ground_4: -1939246281
       Tileset_ground_20: 342591439
-      Tileset_ground_1: -285211920
       Tileset_ground_22: 780429515
-      Tileset_ground_0: -714932086
+      Tileset_ground_27: 378626972
       Tileset_ground_5: 130306881
+      Tileset_ground_1: -285211920
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
