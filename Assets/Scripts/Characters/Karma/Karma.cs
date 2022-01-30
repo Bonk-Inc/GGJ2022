@@ -5,6 +5,7 @@ public class Karma : MonoBehaviour
 {
     [SerializeField] 
     private int maxKarma = 100;
+    public int MaxKarma => maxKarma;
 
     public event EventHandler<KarmaChangeArgs> OnKarmaChange; 
     

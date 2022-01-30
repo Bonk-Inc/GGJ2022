@@ -8,9 +8,6 @@ public class KarmaChangeHandler : MonoBehaviour
     [SerializeField]
     private SceneSwitcher sceneSwitcher;
 
-    [SerializeField]
-    private const int maxKarma = 100;
-
     private const string recentWinPlayerPref = "RecentWin";
     private const string demonWinPlayerPref = "DemonWin";
     private const string angelWinPlayerPref = "AngelWin";
@@ -38,17 +35,10 @@ public class KarmaChangeHandler : MonoBehaviour
     }
 
     private void CheckWinConditions(int currentKarma) {
-        switch (currentKarma)
-        {
-            case <= 0:
-                WinGame(demonWinPlayerPref);
-                break;
-            case >= maxKarma:
-                WinGame(angelWinPlayerPref);
-                break;
-            default:
-                break;
-        }
+        if(currentKarma <= 0)
+            WinGame(demonWinPlayerPref);
+        else if(currentKarma >= karma.MaxKarma)
+            WinGame(angelWinPlayerPref);
     }
 
     private void WinGame(string keyWin) {
