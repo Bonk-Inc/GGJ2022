@@ -14,6 +14,12 @@ public class NpcFinder : MonoBehaviour
     [SerializeField]
     private float circleSize;
 
+    [SerializeField]
+    private float minDegreesApart;
+
+    [SerializeField]
+    private float arrowImageRotationOffset;
+
     private Camera cam;
 
     private void Start() {
@@ -23,7 +29,6 @@ public class NpcFinder : MonoBehaviour
     private void Update()
     {
         var npcs = GetAllNpcs();
-        Debug.Log(npcs.Count);
         DisableArrows();
         CreateArrows(npcs);
     }
@@ -46,28 +51,69 @@ public class NpcFinder : MonoBehaviour
     }
 
     private void CreateArrows(List<Transform> npcs){
+        
+        var angles = GetSortedAngleList(npcs);
+        var finalAngles = CalculateFinalAngles(angles);
+        CreateArrowsOnAngles(finalAngles);
+    }
+
+
+    private List<float> GetSortedAngleList(List<Transform> npcs){
         var centerPosition = GetCenterScreenWorldPosition();
+        var angles = new List<float>(); 
         for (var i = 0; i < npcs.Count; i++)
         {
-            var arrow = GetArrow(i);
-            arrow.SetParent(transform);
-            
             var directionToNpc = ((Vector2)npcs[i].position - centerPosition).normalized;
-            var angle = Vector2.Angle(Vector2.up, directionToNpc);
+            var angle = Vector2.SignedAngle(Vector2.up, directionToNpc);
+            angles.Add(angle);
+        }
+        angles.Sort();
+        return angles;
+    }
 
-            arrow.rotation = Quaternion.Euler(0, 0, angle);
-            arrow.position = centerPosition + directionToNpc * circleSize;
+    private List<float> CalculateFinalAngles(List<float> angles){
+        float currentAngleCount = 0;
+        float currentTotalPackedAngle = 0;
+        List<float> finalAngles = new List<float>(); 
+        for (var i = 0; i < angles.Count; i++)
+        {
+            float currentAngle = angles[i];
+            currentAngleCount += 1;
+            currentTotalPackedAngle += currentAngle;
+            if (i >= angles.Count-1 || Mathf.Abs(angles[i+1] - currentAngle) > minDegreesApart){
+                finalAngles.Add(currentTotalPackedAngle / currentAngleCount);
+                currentAngleCount = 0;
+                currentTotalPackedAngle = 0;
+            }
+        }
+        return finalAngles;
+    }
+
+    private void CreateArrowsOnAngles(List<float> finalAngles){
+        for (var i = 0; i < finalAngles.Count; i++)
+        {
+            var arrow = GetArrow(i);
+            var angle = finalAngles[i];
+            var directionToNpc = Vector2.up.Rotate(angle);
+            arrow.SetParent(transform);
+            arrow.gameObject.SetActive(true);
+            arrow.rotation = Quaternion.Euler(0, 0, angle + arrowImageRotationOffset);
+            arrow.position = GetScreenCenter() + directionToNpc * circleSize;
         }
     }
 
     private Vector2 GetCenterScreenWorldPosition(){
-        var screenCenter = new Vector2(Screen.width/2, Screen.height/2);
+        var screenCenter = GetScreenCenter();
         var worldposition = cam.ScreenToWorldPoint(screenCenter.ToVector3(npcTracker.transform.position.z));
         return (Vector2)worldposition;
     }
 
+    private Vector2 GetScreenCenter(){
+        return new Vector2(Screen.width/2, Screen.height/2);
+    }
+
     private Transform GetArrow(int n){
-        if(transform.childCount < n){
+        if(transform.childCount > n){
             return transform.GetChild(n);
         }else {
             return Instantiate(arrowPrefab).transform;
