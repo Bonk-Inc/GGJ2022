@@ -5,18 +5,21 @@ public class Karma : MonoBehaviour
 {
     [SerializeField] 
     private int maxKarma = 100;
+    
     public int MaxKarma => maxKarma;
 
-    public event EventHandler<KarmaChangeArgs> OnKarmaChange; 
-    
-    public KarmaState KarmaState { get; private set; }
+    public event EventHandler<KarmaStateChangeArgs> OnKarmaStateChange;
+
+    public event EventHandler<KarmaChangeArgs> OnKarmaChange;
+
+    private KarmaState karmaState;
 
     private int currentKarma;
 
     private void Awake()
     {
         currentKarma = maxKarma / 2;
-        KarmaState = KarmaState.Human;
+        karmaState = KarmaState.Human;
     }
 
     private KarmaState DetermineKarmaState(float karmaPercentage) => karmaPercentage switch
@@ -34,29 +37,41 @@ public class Karma : MonoBehaviour
     {
         currentKarma = (karma >= maxKarma) ? maxKarma : (karma <= 0) ? 0 : karma;
 
-        var previousKarma = KarmaState;
+        var previousKarma = karmaState;
         var karmaPercentage = (100f / maxKarma) * currentKarma;
-        KarmaState = DetermineKarmaState(karmaPercentage);
+        karmaState = DetermineKarmaState(karmaPercentage);
 
-        if (KarmaState != previousKarma)
-            CallEvent(previousKarma);
+        if (karmaState != previousKarma)
+            CallStateEvent(previousKarma);
+        
+        CallKarmaEvent(currentKarma);
     }
 
-    private void CallEvent(KarmaState previousKarmaState)
+    private void CallStateEvent(KarmaState previousKarmaState)
     {
-        var eventArgs = new KarmaChangeArgs
+        var eventArgs = new KarmaStateChangeArgs
         {
             previousKarmaState = previousKarmaState,
-            newKarmaState = KarmaState,
-            karma = currentKarma
+            newKarmaState = karmaState,
         };
+        
+        OnKarmaStateChange?.Invoke(this, eventArgs);
+    }
+
+    private void CallKarmaEvent(int karma)
+    {
+        var eventArgs = new KarmaChangeArgs { karma = karma };
         
         OnKarmaChange?.Invoke(this, eventArgs);
     }
-
-    public class KarmaChangeArgs
+    
+    public class KarmaStateChangeArgs
     {
         public KarmaState previousKarmaState, newKarmaState;
+    }
+    
+    public class KarmaChangeArgs
+    {
         public int karma;
     }
 }

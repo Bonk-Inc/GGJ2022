@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 1638692426}
   - component: {fileID: 2998575734700426797}
   - component: {fileID: 3484952638339056984}
+  - component: {fileID: 7719459721658525380}
   m_Layer: 3
   m_Name: Player-chan
   m_TagString: Untagged
@@ -508,6 +509,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1e39c4a32364bc4b26bf267d185e55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  karma: {fileID: 2998575734700426797}
+--- !u!114 &7719459721658525380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173657087114078419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71203931acce4a2b8dcf6f69a27120a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   karma: {fileID: 2998575734700426797}
