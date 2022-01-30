@@ -17,6 +17,9 @@ public class NPCPlace : MonoBehaviour
     [SerializeField]
     private List<Transform> enemySpots;
 
+    [SerializeField]
+    private Transform target;
+
     private int npcSaved = 0;
 
     public event Action<int> OnSpotsCleared;
@@ -77,6 +80,7 @@ public class NPCPlace : MonoBehaviour
         for (var i = 0; i < spots; i++)
         {
             GameObject enemy = GameObject.Instantiate(enemyPrefab);
+            enemy.GetComponent<TargetPicker>().SetMainTarget(target);
             enemy.transform.position = enemySpots[i].position;
         }
     }
