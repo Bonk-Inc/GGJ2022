@@ -59,8 +59,8 @@ public class NPCPlace : MonoBehaviour
         var npcs = new List<Transform>();
         foreach (var spot in npcSpots)
         {
-            if(transform == null) continue;
-            if(transform.childCount != 0) npcs.Add(spot.transform.GetChild(0));
+            if(spot == null) continue;
+            if(spot.transform.childCount != 0) npcs.Add(spot.transform.GetChild(0));
         }
         return npcs;
     }
