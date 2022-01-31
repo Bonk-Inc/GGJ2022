@@ -7,7 +7,7 @@ public class PlayerAimInputHandler : MonoBehaviour
 {
 
     public void UpdateAim(InputAction.CallbackContext context){
-        Camera cam = Camera.current;
+        Camera cam = Camera.main;
 
         if(cam == null)
             return;
