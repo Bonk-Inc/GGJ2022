@@ -29,9 +29,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if(rb.velocity.magnitude > 0)
-            rb.velocity = rb.velocity * new Vector2(slowDownSpeed, slowDownSpeed) * Time.deltaTime;
-
         if(target == null) ChangeToDefault();
         agent.SetDestination(target.position);
     }
