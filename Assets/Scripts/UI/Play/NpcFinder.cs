@@ -95,10 +95,9 @@ public class NpcFinder : MonoBehaviour
             var arrow = GetArrow(i);
             var angle = finalAngles[i];
             var directionToNpc = Vector2.up.Rotate(angle);
-            arrow.SetParent(transform);
             arrow.gameObject.SetActive(true);
             arrow.rotation = Quaternion.Euler(0, 0, angle + arrowImageRotationOffset);
-            arrow.position = GetScreenCenter() + directionToNpc * circleSize;
+            arrow.anchoredPosition = directionToNpc * circleSize;
         }
     }
 
@@ -112,11 +111,11 @@ public class NpcFinder : MonoBehaviour
         return new Vector2(Screen.width/2, Screen.height/2);
     }
 
-    private Transform GetArrow(int n){
+    private RectTransform GetArrow(int n){
         if(transform.childCount > n){
-            return transform.GetChild(n);
+            return (RectTransform)transform.GetChild(n);
         }else {
-            return Instantiate(arrowPrefab).transform;
+            return (RectTransform)Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity, transform).transform;
         }
     }
 
