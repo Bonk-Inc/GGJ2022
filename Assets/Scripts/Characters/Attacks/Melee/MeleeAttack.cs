@@ -12,23 +12,8 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] 
     private LayerMask mask;
     
-    private Coroutine attackCoroutine;
-
-    private void FixedUpdate()
-    {
-        var hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, mask);
-        if (hits.Length <= 0)
-        {
-            if (attackCoroutine == null)
-                return;
-
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
-
-            return;
-        }
-
-        attackCoroutine ??= StartCoroutine(HitTargets(hits));
+    private void Awake() { 
+        StartCoroutine(HitTargets());
     }
 
     private HitData CreateHitData(string attackingTag)
@@ -41,10 +26,18 @@ public class MeleeAttack : MonoBehaviour
         };
     }
     
-    private IEnumerator HitTargets(Collider2D[] hits)
+    private IEnumerator HitTargets()
     {
         while (true)
         {
+            var hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, mask);
+
+            if(hits.Length == 0)
+            {
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
+
             foreach (var hit in hits)
             {
                 var target = hit.GetComponent<Hittable>();
