@@ -1051,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460825378015360925, guid: 2fe7fcd1d007645408dbe33e8a3b32b8, type: 3}
       propertyPath: circleSize
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8460825378015360925, guid: 2fe7fcd1d007645408dbe33e8a3b32b8, type: 3}
       propertyPath: npcTracker
