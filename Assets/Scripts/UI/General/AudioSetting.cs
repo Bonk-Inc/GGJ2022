@@ -26,12 +26,16 @@ public class AudioSetting : MonoBehaviour
     {
         slider.maxValue = LogToLinear(maxDB);
         slider.minValue = LogToLinear(minDB);
-
+        
         slider.value = LogToLinear(LoadSetting());
         
         slider.onValueChanged.AddListener((val) => SetVolume());
     }
 
+    private void Start() {
+        LoadSetting();
+    }
+    
     private void OnDestroy()
     {
         slider.onValueChanged.RemoveAllListeners();
@@ -39,6 +43,7 @@ public class AudioSetting : MonoBehaviour
 
     private void SetVolume()
     {
+        print(mixer.name + "   " + LinearToLog(slider.value));
         mixer.SetFloat("volume", LinearToLog(slider.value));
         PlayerPrefs.SetFloat(playerPrefKey, LinearToLog(slider.value));
     }
@@ -54,7 +59,6 @@ public class AudioSetting : MonoBehaviour
         } else {
             mixer.GetFloat("volume", out startValue);
         }
-
         return startValue;
     }
 }
