@@ -43,7 +43,6 @@ public class AudioSetting : MonoBehaviour
 
     private void SetVolume()
     {
-        print(mixer.name + "   " + LinearToLog(slider.value));
         mixer.SetFloat("volume", LinearToLog(slider.value));
         PlayerPrefs.SetFloat(playerPrefKey, LinearToLog(slider.value));
     }
