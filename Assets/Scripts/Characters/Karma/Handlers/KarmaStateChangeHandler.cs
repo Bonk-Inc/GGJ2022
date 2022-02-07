@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class KarmaStateChangeHandler : MonoBehaviour
 {
-    [SerializeField] 
-    private Karma karma;
-
     [SerializeField]
     private AudioSource source;
     
@@ -12,18 +9,17 @@ public class KarmaStateChangeHandler : MonoBehaviour
     private AudioClip demonSound, angelSound, humanSound;
     private void Awake()
     {
-        karma.OnKarmaStateChange += OnKarmaStateChange;
+        GameManager.instance.karma.OnKarmaStateChange += OnKarmaStateChange;
     }
 
     private void OnDestroy()
     {
-        karma.OnKarmaStateChange -= OnKarmaStateChange;
+        GameManager.instance.karma.OnKarmaStateChange -= OnKarmaStateChange;
     }
 
     private void OnKarmaStateChange(object caller, Karma.KarmaStateChangeArgs args)
     {
         var currentKarmaState = args.newKarmaState;
-        Debug.Log("Karma: " + currentKarmaState);
      
         //TODO: Add logic when karma is chagned
         CheckSoundUpdate(args);

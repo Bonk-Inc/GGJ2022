@@ -15,6 +15,7 @@ public class Karma : MonoBehaviour
     private KarmaState karmaState;
 
     private int currentKarma;
+    public int CurrentKarma => currentKarma;
 
     private void Awake()
     {

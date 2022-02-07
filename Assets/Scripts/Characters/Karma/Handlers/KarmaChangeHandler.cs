@@ -3,22 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class KarmaChangeHandler : MonoBehaviour
 {
-    [SerializeField] 
-    private Karma karma;
 
     private const string recentWinPlayerPref = "RecentWin";
     private const string demonWinPlayerPref = "DemonWin";
     private const string angelWinPlayerPref = "AngelWin";
     private const string winScene = "WinScreen";
 
-    private void Awake()
+    private int maxKarma;
+
+    private void Start()
     {
-        karma.OnKarmaChange += OnKarmaChange;
+        GameManager.instance.karma.OnKarmaChange += OnKarmaChange;
+        maxKarma = GameManager.instance.karma.MaxKarma;
     }
 
     private void OnDestroy()
     {
-        karma.OnKarmaChange -= OnKarmaChange;
+        GameManager.instance.karma.OnKarmaChange -= OnKarmaChange;
     }
 
     private void OnKarmaChange(object caller, Karma.KarmaChangeArgs args)
@@ -30,7 +31,7 @@ public class KarmaChangeHandler : MonoBehaviour
     {
         if(currentKarma <= 0)
             WinGame(demonWinPlayerPref);
-        else if(currentKarma >= karma.MaxKarma)
+        else if(currentKarma >= maxKarma)
             WinGame(angelWinPlayerPref);
     }
 
