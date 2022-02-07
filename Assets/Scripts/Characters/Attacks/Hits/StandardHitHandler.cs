@@ -11,7 +11,6 @@ public class StandardHitHandler : Hittable
     public override void Hit(HitData hitData)
     {
         var hitDamage = hitData.damage;
-        
         SetPlayerKarmaBasedOnAttack(hitData.attackerTag, hitData.attackingTag, hitDamage);
         health.Damage(hitDamage);
     }

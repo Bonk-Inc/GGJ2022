@@ -11,8 +11,9 @@ public class CharacterKarmaUI : MonoBehaviour
     private void Start()
     {
         max = GameManager.instance.karma.MaxKarma;
-
         GameManager.instance.karma.OnKarmaChange += GetCurrentFill;
+
+        UpdateFill(GameManager.instance.karma.CurrentKarma);
     }
 
     private void OnDestroy()
@@ -22,9 +23,13 @@ public class CharacterKarmaUI : MonoBehaviour
 
     private void GetCurrentFill(object caller, Karma.KarmaChangeArgs args)
     {
-        var fillAmount = (float)args.karma / (float)max;
+        UpdateFill(args.karma);
+    }
+
+    private void UpdateFill(int karma) {
+        var fillAmount = (float) karma / (float)max;
         mask.fillAmount = fillAmount;
         
-        fill.color = (fillAmount >= 0.6f) ? Color.blue : (fillAmount <= 0.4f) ? Color.red : Color.white;
+        fill.color = (fillAmount >= 0.6f) ? Color.blue : (fillAmount <= 0.4f) ? Color.red : Color.magenta;
     }
 }
