@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class HealingCone : Weapon
 {
-    private const string NpcTag = "Neutral";
-    private const string EnemyTag = "Enemy";
 
     private const int NpcHealKarmaIncrease = 100;
 
@@ -59,9 +57,9 @@ public class HealingCone : Weapon
     }
 
     private void CheckHit(Collider2D collider){
-        if(currentTimeSincePossibleHeal >= 1 && collider.CompareTag(NpcTag)) {
+        if(currentTimeSincePossibleHeal >= 1 && collider.CompareTag(Tags.npc)) {
             HandleNpcHit(collider);
-        } else if (collider.CompareTag(EnemyTag)){
+        } else if (collider.CompareTag(Tags.enemy)){
             HandleEnemyHit(collider);
         }
     }
