@@ -583,11 +583,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coneAngle: 65
-  minDistance: 0.5
-  maxDistance: 3.5
+  coneStartDistance: 0.5
+  coneEndDistance: 3.5
   pushforce: 5
   healPerSecond: 2
-  visual: {fileID: 1805700400}
+  coneVisualRepresentation: {fileID: 1805700400}
 --- !u!1 &4539432511665408278
 GameObject:
   m_ObjectHideFlags: 0
