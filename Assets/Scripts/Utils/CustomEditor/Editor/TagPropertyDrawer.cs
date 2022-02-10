@@ -19,7 +19,7 @@ public class TagPropertyDrawer : MultipleChoicePropertyDrawer
         
             if(tagAttribute.useUnityDefaultTagDropdown) {
                 EditorGUI.BeginProperty(position, label, property);
-                
+
                 var selectedTag = EditorGUI.TagField(
                     position,
                     label,

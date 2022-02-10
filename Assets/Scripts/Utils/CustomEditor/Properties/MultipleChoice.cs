@@ -7,10 +7,10 @@ using UnityEngine;
 public class MultipleChoice : PropertyAttribute
 {
 
-    public readonly string[] choices; 
+    public readonly List<string> choices; 
 
     public MultipleChoice(params string[] choices)
     {
-        this.choices = choices;
+        this.choices = new List<string>(choices);
     }
 }

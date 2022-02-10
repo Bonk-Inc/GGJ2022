@@ -7,16 +7,20 @@ using UnityEngine;
 public class MultipleChoicePropertyDrawer : PropertyDrawer
 {
 
-    int current = 0;
-
     public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
     {
         EditorGUI.BeginProperty(position, label, property);
         var multipleChoiceAttribute = this.attribute as MultipleChoice;
         if (property.propertyType == SerializedPropertyType.String)
-        {
-            current = EditorGUI.Popup (position, label.text, current, multipleChoiceAttribute.choices);
-            property.stringValue = multipleChoiceAttribute.choices[current];
+        {            
+            var current = multipleChoiceAttribute.choices.IndexOf(property.stringValue);
+            var choices = new List<string>(multipleChoiceAttribute.choices);
+            if(current < 0){
+                choices.Add(property.stringValue);
+                current = choices.Count - 1;
+            }
+            current = EditorGUI.Popup (position, label.text, current, choices.ToArray());
+            property.stringValue = choices[current];                
         }
         else
         {

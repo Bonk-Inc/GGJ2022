@@ -7,4 +7,10 @@ public class HitData
     public string attackerTag, attackingTag;
     
     public Collision2D collision = null;
+
+    public static HitData FromDamage(int damage){
+        return new HitData() {
+            damage = damage
+        };
+    }
 }
