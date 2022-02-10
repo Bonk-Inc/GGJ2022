@@ -10,6 +10,9 @@ public class EnemyPlayerSpawener : MonoBehaviour
     private float radiusOffset;
 
     [SerializeField]
+    private float sampleRadius = 5f;
+
+    [SerializeField]
     private float camOffset = 0.5f;
 
     [SerializeField]
@@ -33,8 +36,10 @@ public class EnemyPlayerSpawener : MonoBehaviour
 
     private void Update() {
         float angle = 360 / pointsToCheck * currentCheck;
-        Vector3 position = CircledNavmeshLocation(camRadius + radiusOffset, angle);
-        if (!IsInView(position))
+        (bool pointFound, Vector3 point) result = TryFindLocationInNavmeshAroundPlayer(camRadius + radiusOffset, angle);
+        
+        Vector3 position = result.point;
+        if (result.pointFound && !IsInView(position))
         {
             SpawnEnemy(position);
         }
@@ -62,15 +67,17 @@ public class EnemyPlayerSpawener : MonoBehaviour
     }
 
     
-     public Vector3 CircledNavmeshLocation(float radius, float angle) {
+     public (bool pointFound, Vector3 point) TryFindLocationInNavmeshAroundPlayer(float radius, float angle) {
          Vector3 direction = Vector2.up.Rotate(angle) * radius;
          direction += cam.transform.position;
+         direction.z = transform.position.z;
+
          NavMeshHit hit;
-         Vector3 finalPosition = Vector3.zero;
-         if (NavMesh.SamplePosition(direction, out hit, radius, 1)) {
-             finalPosition = hit.position;            
+         if (NavMesh.SamplePosition(direction, out hit, sampleRadius, ~0)) {
+             return (true, hit.position);            
+         } else {
+            return (false, Vector3.zero);
          }
-         return finalPosition;
      }
 
      public void AddToSpawnQueue(GameObject enemy){
@@ -82,7 +89,7 @@ public class EnemyPlayerSpawener : MonoBehaviour
         
         if(spawnQueue.Count == 0)
             return;
-
+        
         var enemy = spawnQueue.Dequeue();
         enemy.transform.position = position;
         enemy.SetActive(true);
