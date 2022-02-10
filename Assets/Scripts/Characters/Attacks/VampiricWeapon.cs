@@ -86,6 +86,7 @@ public class VampiricWeapon : Weapon
             
         hittable.Hit( HitData.FromDamage(vampiricHitData.DamageTotarget) );
         myHealth.Heal( vampiricHitData.HealthStealAmount );
+        GameManager.instance.karma.Increase(vampiricHitData.KarmaChangeAmount);
     }
 
 
@@ -101,9 +102,13 @@ public class VampiricWeapon : Weapon
         [SerializeField]
         private int healthStealAmount;
 
+        [SerializeField]
+        private int karmaChangeAmount;
+
         public string Tag => targetTag;
         public int HealthStealAmount => healthStealAmount;
         public int DamageTotarget => damageToTarget;
+        public int KarmaChangeAmount => karmaChangeAmount;
     }
 
 }

@@ -232,9 +232,11 @@ MonoBehaviour:
   - targetTag: Neutral
     damageToTarget: 1000000000
     healthStealAmount: 20
+    karmaChangeAmount: -3000
   - targetTag: Enemy
     damageToTarget: 100
     healthStealAmount: 5
+    karmaChangeAmount: -100
   targeter: {fileID: 1539028235637201879}
   myHealth: {fileID: 1638692414}
   secondsBetweenHits: 1
