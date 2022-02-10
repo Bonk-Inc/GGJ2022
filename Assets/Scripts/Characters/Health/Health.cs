@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
 
     public void SetHealth(int health){
         int prevHealth = CurrentHealth;
-        CurrentHealth = health;
+        CurrentHealth = Math.Min(health, maxHealth);
         CallEvent(prevHealth, CurrentHealth);
     }
 

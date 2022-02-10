@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class HealingCone : Weapon
 {
-    private const string NpcTag = "Neutral";
-    private const string EnemyTag = "Enemy";
 
     private const int NpcHealKarmaIncrease = 100;
 
@@ -11,7 +9,7 @@ public class HealingCone : Weapon
     private float coneAngle = 90;
 
     [SerializeField]
-    private float minDistance = 0.5f , maxDistance = 5;
+    private float coneStartDistance = 0.5f , coneEndDistance = 5;
 
     [SerializeField]
     private float pushforce = 5;
@@ -20,56 +18,66 @@ public class HealingCone : Weapon
     private int healPerSecond = 2;
 
     [SerializeField]
-    private SpriteRenderer visual;
+    private SpriteRenderer coneVisualRepresentation;
 
-
-    private float currentHealStamp = 0;
+    private float currentTimeSincePossibleHeal = 0;
     private bool isCasting;
 
     public override void Attack(){}
 
     public override void Release()
     {
-        visual.enabled = false;
+        coneVisualRepresentation.enabled = false;
         isCasting = false;
     }
 
     public override void Trigger()
     {
-        currentHealStamp = 0;
-        visual.enabled = true;
+        currentTimeSincePossibleHeal = 0;
+        coneVisualRepresentation.enabled = true;
         isCasting = true;
     }
 
     private void Update() {
-        currentHealStamp += Time.deltaTime;
+        currentTimeSincePossibleHeal += Time.deltaTime;
         if(isCasting){
             CastCone();
         }
-        if (currentHealStamp >= 1){
-            currentHealStamp -= 1;
+        if (currentTimeSincePossibleHeal >= 1){
+            currentTimeSincePossibleHeal -= 1;
         }
     }
 
     private void CastCone(){
-        var allInCone = Physics2DHelper.ConeOverlapAll(transform.position, transform.up, coneAngle, maxDistance, minDistance);
+        var allInCone = Physics2DHelper.ConeOverlapAll(transform.position, transform.up, coneAngle, coneEndDistance, coneStartDistance);
         foreach (var collider in allInCone)
         {
-            if(currentHealStamp >= 1 && collider.CompareTag(NpcTag)) {
-                collider.GetComponent<Hittable>().Hit(new HitData {damage= -healPerSecond});
-                GameManager.instance.karma.Increase(NpcHealKarmaIncrease);
-            } else if (collider.CompareTag(EnemyTag)){
-                var pushDirection = (collider.transform.position - transform.position).normalized;
-                collider.attachedRigidbody.AddForce(pushDirection * pushforce);
-            }
+             CheckHit(collider);
         }
-        
+    }
+
+    private void CheckHit(Collider2D collider){
+        if(currentTimeSincePossibleHeal >= 1 && collider.CompareTag(Tags.npc)) {
+            HandleNpcHit(collider);
+        } else if (collider.CompareTag(Tags.enemy)){
+            HandleEnemyHit(collider);
+        }
+    }
+
+    private void HandleNpcHit(Collider2D collider){
+            collider.GetComponent<Hittable>().Hit(new HitData {damage= -healPerSecond});
+            GameManager.instance.karma.Increase(NpcHealKarmaIncrease);
+    }
+
+    private void HandleEnemyHit(Collider2D collider){
+        var pushDirection = (collider.transform.position - transform.position).normalized;
+        collider.attachedRigidbody.AddForce(pushDirection * pushforce);
     }
 
     private void OnDrawGizmos() {
         var color = isCasting ? Color.green : Color.red;
         Gizmos.color = color;
-        GizmoHelper.DrawCircleCone2D(transform.position, transform.up, maxDistance, minDistance, coneAngle);
+        GizmoHelper.DrawCircleCone2D(transform.position, transform.up, coneEndDistance, coneStartDistance, coneAngle);
     }
 
 }
