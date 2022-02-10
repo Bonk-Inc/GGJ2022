@@ -10,11 +10,11 @@ public class MultipleChoicePropertyDrawer : PropertyDrawer
     public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
     {
         EditorGUI.BeginProperty(position, label, property);
-        var multipleChoiceAttribute = this.attribute as MultipleChoice;
+        MultipleChoice multipleChoiceAttribute = this.attribute as MultipleChoice;
         if (property.propertyType == SerializedPropertyType.String)
         {            
-            var current = multipleChoiceAttribute.choices.IndexOf(property.stringValue);
-            var choices = new List<string>(multipleChoiceAttribute.choices);
+            int current = multipleChoiceAttribute.choices.IndexOf(property.stringValue);
+            List<string> choices = new List<string>(multipleChoiceAttribute.choices);
             if(current < 0){
                 choices.Add(property.stringValue);
                 current = choices.Count - 1;

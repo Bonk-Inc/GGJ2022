@@ -61,16 +61,16 @@ public class VampiricWeapon : Weapon
 
 
     private void HitTargets(){
-        var targets = new List<Collider2D>(targeter.CurrentTargets);
+        List<Collider2D> targets = new List<Collider2D>(targeter.CurrentTargets);
         for (var i = 0; i < targets.Count; i++)
         {
-            var target = targets[i];
+            Collider2D target = targets[i];
             CheckForHittableTarget(target);
         }
     }
 
     private void CheckForHittableTarget(Collider2D target){
-        foreach (var possibleHit in targetsHitActionData)
+        foreach (VampiricTargetData possibleHit in targetsHitActionData)
         {
             if(!target.CompareTag(possibleHit.Tag))
                 continue;
