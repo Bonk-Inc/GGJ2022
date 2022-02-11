@@ -28,6 +28,7 @@ public class WaveSpawning : MonoBehaviour
             if(currentWave == waveData.Count) {
                 WinGame();
                 StopCoroutine(routine);
+                break;
             }
 
             yield return new WaitForSeconds(waveData[currentWave].time);

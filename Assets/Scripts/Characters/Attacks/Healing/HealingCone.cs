@@ -3,7 +3,8 @@ using UnityEngine;
 public class HealingCone : Weapon
 {
 
-    private const int NpcHealKarmaIncrease = 100;
+    [SerializeField]
+    private int NpcHealKarmaIncrease = 100;
 
     [SerializeField]
     private float coneAngle = 90;
