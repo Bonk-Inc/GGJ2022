@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5654152913794314459, guid: 14ebca5e65440eb1eabf00175da17123, type: 3}
   shooterCollider: {fileID: 4768001279719350768}
+  shootDelay: 1
 --- !u!212 &550212334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -408,7 +409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1774964820562824742}
+  - {fileID: 480679398384725055}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 104.552}
@@ -463,7 +464,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1173657087114078416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,10 +620,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01792264, y: -0.5462322}
+  m_Offset: {x: -0.01792264, y: 0.21}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.105, y: 1.515}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -779,6 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8263f459ece1445b1a1414510ef722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NpcHealKarmaIncrease: 100
   coneAngle: 65
   coneStartDistance: 0.5
   coneEndDistance: 3.5
@@ -810,7 +812,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4539432511665408278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -818,7 +820,7 @@ Transform:
   - {fileID: 550212333}
   - {fileID: 833328371482392872}
   - {fileID: 638600197170129814}
-  m_Father: {fileID: 1173657087114078414}
+  m_Father: {fileID: 480679398384725055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2008177493103333591
@@ -846,3 +848,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1200868e22272d44e981e12d04b12341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5730305187000406948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480679398384725055}
+  m_Layer: 3
+  m_Name: target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480679398384725055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730305187000406948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1774964820562824742}
+  m_Father: {fileID: 1173657087114078414}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
