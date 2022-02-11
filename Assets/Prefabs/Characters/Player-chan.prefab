@@ -782,7 +782,7 @@ MonoBehaviour:
   coneAngle: 65
   coneStartDistance: 0.5
   coneEndDistance: 3.5
-  pushforce: 5
+  pushforce: 150
   healPerSecond: 2
   coneVisualRepresentation: {fileID: 1805700400}
 --- !u!1 &4539432511665408278
