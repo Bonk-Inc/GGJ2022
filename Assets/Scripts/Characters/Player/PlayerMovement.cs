@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerNeutralMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField]
@@ -16,6 +14,8 @@ public class PlayerNeutralMovement : MonoBehaviour
     private Animator animator;
 
     private Vector2 direction = Vector2.zero;
+
+    public float Force { get => force; set => force = value; }
 
     public void SetDirection(InputAction.CallbackContext context){
         direction = context.ReadValue<Vector2>().normalized;
@@ -30,5 +30,4 @@ public class PlayerNeutralMovement : MonoBehaviour
     private void MoveInSetDirection() {
         rb.AddForce(direction * force, ForceMode2D.Force);
     }
-
 }
